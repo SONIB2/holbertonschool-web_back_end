@@ -7,13 +7,11 @@ export default defineConfig({
       files: ['*.js'],
       languageOptions: {
         globals: {
-          // Define global variables here, if any
           node: 'readonly',
         },
       },
       plugins: ['node'],
       rules: {
-        // Add or modify rules here
         'node/no-missing-import': 'error',
       },
     },
