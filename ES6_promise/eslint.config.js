@@ -1,37 +1,19 @@
-import { defineConfig } from 'eslint';
+// eslint.config.js
+import eslint from 'eslint';
 
-export default defineConfig({
+const { ESLint } = eslint; // ESLint package
+
+export default {
   env: {
-    browser: false,
+    node: true,
     es6: true,
-    jest: true,
   },
-  extends: [
-    'airbnb-base',
-    'plugin:jest/all',
-  ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
+  extends: ['eslint:recommended'],
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
-  plugins: ['jest'],
   rules: {
     'no-console': 'off',
-    'no-shadow': 'off',
-    'no-restricted-syntax': [
-      'error',
-      'LabeledStatement',
-      'WithStatement',
-    ],
   },
-  overrides: [
-    {
-      files: ['*.js'],
-      excludedFiles: 'babel.config.js',
-    },
-  ],
-});
+};
