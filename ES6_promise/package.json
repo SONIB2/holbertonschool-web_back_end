@@ -4,7 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "lint": "eslint 0-promise.js",
+    "dev": "node 1-main.js",
+    "lint": "eslint 1-promise.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,0 +1,1 @@
+import getFullResponseFromAPI from './1-promise.js';
