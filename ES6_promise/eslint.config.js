@@ -1,35 +1,21 @@
-module.exports = {
-    env: {
-      browser: false,
-      es6: true,
-      jest: true,
+// eslint.config.js
+import { defineConfig } from 'eslint-define-config';
+
+export default defineConfig({
+  overrides: [
+    {
+      files: ['*.js'],
+      languageOptions: {
+        globals: {
+          // Define global variables here, if any
+          node: 'readonly',
+        },
+      },
+      plugins: ['node'],
+      rules: {
+        // Add or modify rules here
+        'node/no-missing-import': 'error',
+      },
     },
-    extends: [
-      'airbnb-base',
-      'plugin:jest/all',
-    ],
-    globals: {
-      Atomics: 'readonly',
-      SharedArrayBuffer: 'readonly',
-    },
-    parserOptions: {
-      ecmaVersion: 2018,
-      sourceType: 'module',
-    },
-    plugins: ['jest'],
-    rules: {
-      'no-console': 'off',
-      'no-shadow': 'off',
-      'no-restricted-syntax': [
-        'error',
-        'LabeledStatement',
-        'WithStatement',
-      ],
-    },
-    overrides:[
-      {
-        files: ['*.js'],
-        excludedFiles: 'babel.config.js',
-      }
-    ]
-  };
+  ],
+});
