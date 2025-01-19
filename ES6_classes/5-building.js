@@ -18,4 +18,4 @@ class Building {
   }
 }
 
-export default Building;
+export default Building; // Ensure this line is present
