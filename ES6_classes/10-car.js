@@ -5,7 +5,7 @@ class Car {
     this._brand = brand;
     this._motor = motor;
     this._color = color;
-    this[carSymbol] = true;  // Optional symbol property for uniqueness
+    this[carSymbol] = true;
   }
 
   // Method to clone the car object
