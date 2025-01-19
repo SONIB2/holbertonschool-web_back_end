@@ -1,16 +1,21 @@
-import Building from './building'; // Ensure this path is correct
+// 5-building.js
+class Building {
+  constructor(sqft) {
+    if (this.constructor === Building) {
+      throw new Error("Class extending Building must override evacuationWarningMessage");
+    }
+    this._sqft = sqft; // Store sqft in a private attribute
+  }
 
-// Create a subclass of Building for testing
-class TestBuilding extends Building {
+  // Getter for sqft
+  get sqft() {
+    return this._sqft;
+  }
+
+  // Abstract method to be implemented by subclasses
   evacuationWarningMessage() {
-    return "This is a test evacuation warning message.";
+    throw new Error("evacuationWarningMessage must be implemented");
   }
 }
 
-describe('Building Class', () => {
-  test("Building is implemented correctly", () => {
-    const testBuilding = new TestBuilding(100); // Create an instance of the subclass
-    expect(testBuilding).toBeInstanceOf(TestBuilding);
-    expect(testBuilding.sqft).toBe(100);
-  });
-});
+export default Building;
