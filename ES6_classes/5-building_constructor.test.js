@@ -1,15 +1,21 @@
-import Building from './building'; // Adjust path if necessary
-
-// Create a subclass of Building for testing
-class TestBuilding extends Building {
-  evacuationWarningMessage() {
-    return "This is a test building evacuation warning.";
-  }
-}
+import Building from './building'; // Ensure this path is correct
 
 describe('Building Class', () => {
-  test("Building is implemented correctly", () => {
-    const building = new TestBuilding(200); // Use TestBuilding instead of Building
-    expect(building.sqft).toBe(200);
-  });
+    test("Building forces override", () => {
+        expect(() => {
+            new Building(200); // This should throw an error
+        }).toThrowError("Class extending Building must override evacuationWarningMessage");
+    });
+
+    test("TestBuilding is implemented correctly", () => {
+        class TestBuilding extends Building {
+            evacuationWarningMessage() {
+                return "This is a test building evacuation warning.";
+            }
+        }
+
+        const testBuilding = new TestBuilding(100); // Create an instance of the subclass
+        expect(testBuilding).toBeInstanceOf(TestBuilding);
+        expect(testBuilding.sqft).toBe(100);
+    });
 });
