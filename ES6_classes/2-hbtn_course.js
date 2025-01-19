@@ -16,6 +16,7 @@ class HolbertonCourse {
   get name() {
     return this._name;
   }
+  
   set name(newName) {
     if (typeof newName !== 'string') {
       throw new TypeError('Name must be a string');
