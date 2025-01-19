@@ -1,8 +1,8 @@
-import Building from './5-building.js';
+import Building from './5-building';
 
 class SkyHighBuilding extends Building {
   constructor(sqft, floors) {
-    super(sqft);  // Passing sqft to the parent class constructor
+    super(sqft);
     this._floors = floors; // Store floors in a private attribute
   }
 
