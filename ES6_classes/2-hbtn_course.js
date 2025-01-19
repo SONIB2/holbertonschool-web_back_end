@@ -42,8 +42,8 @@ export default class HolbertonCourse {
   set students(students) {
     if (Array.isArray(students)) {
       this._students = students;
-        } else {
-            throw new Error('Students must be an array of strings');
+    } else {
+      throw new Error('Students must be an array of strings');
     }
   }
 }
