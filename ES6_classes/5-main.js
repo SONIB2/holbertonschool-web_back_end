@@ -6,7 +6,7 @@ console.log(b); // Output: Building { _sqft: 100 }
 class TestBuilding extends Building {}
 
 try {
-    new TestBuilding(200);
+    new TestBuilding(200); // This should throw an error
 } catch (err) {
-    console.log(err); // Output: Error: Class extending Building must override evacuationWarningMessage
+    console.log(err.message); // Output: Class extending Building must override evacuationWarningMessage
 }

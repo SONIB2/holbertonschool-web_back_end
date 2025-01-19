@@ -1,8 +1,6 @@
+// 5-building.js
 class Building {
     constructor(sqft) {
-        if (new.target === Building) {
-            throw new Error("Cannot instantiate abstract class Building directly");
-        }
         this._sqft = sqft; // Store sqft in a private attribute
     }
 
@@ -14,3 +12,5 @@ class Building {
         throw new Error('Class extending Building must override evacuationWarningMessage');
     }
 }
+
+export default Building; // Ensure this line is present
