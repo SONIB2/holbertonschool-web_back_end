@@ -1,4 +1,3 @@
-// building.js (or whatever the file is named)
 class Building {
     constructor(sqft) {
         if (this.constructor === Building) {
@@ -12,4 +11,4 @@ class Building {
     }
 }
 
-export default Building; // Ensure you are using default export
+export default Building; // Ensure this is exported correctly

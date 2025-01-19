@@ -1,4 +1,4 @@
-import Building from './building'; // Adjust the path as necessary
+import Building from './building'; // Correct path to the Building class
 
 describe('Building Class', () => {
     test("Building is implemented correctly", () => {
