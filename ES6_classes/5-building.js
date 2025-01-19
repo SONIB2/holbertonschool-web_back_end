@@ -1,20 +1,15 @@
-// 5-building.js
+// 5-building.js (Abstract Building class)
 class Building {
   constructor(sqft) {
       if (this.constructor === Building) {
           throw new Error("Class extending Building must override evacuationWarningMessage");
       }
-      this._sqft = sqft;
+      this._sqft = sqft;  // Store sqft in a private attribute
   }
 
-  // Getter for sqft
-  get sqft() {
-      return this._sqft;
-  }
-
-  // Abstract method to be implemented by subclasses
+  // Abstract method that must be implemented by subclasses
   evacuationWarningMessage() {
-      throw new Error("evacuationWarningMessage must be implemented");
+      throw new Error("Subclass must implement this method");
   }
 }
 

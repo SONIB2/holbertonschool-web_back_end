@@ -1,5 +1,4 @@
-// 5-building_constructor.test.js
-
+// 5-building_constructor.test.js (Test)
 import Building from './5-building.js';
 
 describe('Building Class', () => {
@@ -20,7 +19,7 @@ describe('Building Class', () => {
 
         const testBuilding = new TestBuilding(100); // This should work because TestBuilding implements evacuationWarningMessage
         expect(testBuilding).toBeInstanceOf(TestBuilding);
-        expect(testBuilding.sqft).toBe(100);
+        expect(testBuilding._sqft).toBe(100);
         expect(testBuilding.evacuationWarningMessage()).toBe("This is a test building evacuation warning.");
     });
 });
