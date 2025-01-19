@@ -19,7 +19,7 @@ describe('Building Class', () => {
 
         const testBuilding = new TestBuilding(100); // This should work because TestBuilding implements evacuationWarningMessage
         expect(testBuilding).toBeInstanceOf(TestBuilding);
-        expect(testBuilding._sqft).toBe(100);
+        expect(testBuilding.sqft).toBe(100);
         expect(testBuilding.evacuationWarningMessage()).toBe("This is a test building evacuation warning.");
     });
 });
