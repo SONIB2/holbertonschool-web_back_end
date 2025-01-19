@@ -1,4 +1,4 @@
-import { listOfStudents } from "./9-hoisting.js"; // Ensure correct import
+import { listOfStudents } from "./9-hoisting.js"; // Ensure to import the list correctly
 
 console.log(listOfStudents);
 
