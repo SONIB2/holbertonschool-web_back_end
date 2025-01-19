@@ -11,21 +11,21 @@ export default class HolbertonCourse {
       throw new Error('Length must be a number');
     }
     if (Array.isArray(students)) {
-            this._students = students;
-        } else{
-            throw new Error('Students must be an array of strings');
-        }
+      this._students = students;
+    } else {
+      throw new Error('Students must be an array of strings');
     }
-    get name() {
-        return this._name;
-    }
-    get length() {
-        return this._length;
-    }
-    get students() {
-        return this._students;
-    }
-    set name(name) {
+  }
+  get name() {
+    return this.name;
+  }
+  get length() {
+    return this._length;
+  }
+  get students() {
+    return this._students;
+  }
+  set name(name) {
         if (typeof name === 'string' ) {
             return this._name = name;
         } else {
