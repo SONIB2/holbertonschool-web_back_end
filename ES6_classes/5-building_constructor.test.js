@@ -1,4 +1,6 @@
-import Building from './5-building.js';  // Ensure this path is correct
+// 5-building_constructor.test.js
+
+import Building from './5-building.js';
 
 describe('Building Class', () => {
     // Test to ensure that Building cannot be instantiated directly
@@ -16,7 +18,7 @@ describe('Building Class', () => {
             }
         }
 
-        const testBuilding = new TestBuilding(100); // Create an instance of the subclass
+        const testBuilding = new TestBuilding(100); // This should work because TestBuilding implements evacuationWarningMessage
         expect(testBuilding).toBeInstanceOf(TestBuilding);
         expect(testBuilding.sqft).toBe(100);
         expect(testBuilding.evacuationWarningMessage()).toBe("This is a test building evacuation warning.");
