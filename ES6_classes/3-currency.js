@@ -27,7 +27,7 @@ class Currency {
     }
     this._name = newName;
   }
-  _displayFullCurrency() {
+  displayFullCurrency() {
     return `${this._name} (${this._code})`;
   }
 }
