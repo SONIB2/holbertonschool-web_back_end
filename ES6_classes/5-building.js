@@ -1,16 +1,15 @@
-// 5-building.js
+// building.js (or whatever the file is named)
 class Building {
     constructor(sqft) {
-        this._sqft = sqft; // Store sqft in a private attribute
-    }
-
-    get sqft() {
-        return this._sqft; // Getter for sqft
+        if (this.constructor === Building) {
+            throw new Error("Class extending Building must override evacuationWarningMessage");
+        }
+        this.sqft = sqft;
     }
 
     evacuationWarningMessage() {
-        throw new Error('Class extending Building must override evacuationWarningMessage');
+        throw new Error("Class extending Building must override evacuationWarningMessage");
     }
 }
 
-export default Building; // Ensure this line is present
+export default Building; // Ensure you are using default export

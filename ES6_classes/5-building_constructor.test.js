@@ -1,4 +1,4 @@
-import Building from './5-building.js'; // Ensure this path is correct
+import Building from './building'; // Correct path to the Building class
 
 describe('Building Class', () => {
     test("Building is implemented correctly", () => {

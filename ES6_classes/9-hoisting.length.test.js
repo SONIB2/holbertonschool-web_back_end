@@ -1,7 +1,5 @@
-import { listOfStudents } from './9-hoisting.js';
-
-console.log(listOfStudents); // Check what is being imported
+import { listOfStudents } from './9-hoisting.js'; // Adjust the path if necessary
 
 test("listOfStudents has the correct length", () => {
-  expect(listOfStudents.length).toBe(5);
+    expect(listOfStudents.length).toBe(5); // Adjust the expected length based on your implementation
 });
