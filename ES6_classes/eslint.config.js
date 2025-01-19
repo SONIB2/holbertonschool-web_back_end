@@ -15,6 +15,8 @@ module.exports = {
       'no-trailing-spaces': 'error', // Example rule to disallow trailing spaces
       'no-unused-vars': 'warn', // Warn about unused variables
       'eqeqeq': 'error', // Enforce strict equality (===)
+      "arrow-parens": ["error", "as-needed"],
+      "lines-between-class-members": ["error", "never"],
     },
   };
   
