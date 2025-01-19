@@ -1,8 +1,15 @@
-import Building from './building'; // Correct path to the Building class
+import Building from './building'; // Adjust the path as necessary
 
 describe('Building Class', () => {
     test("Building is implemented correctly", () => {
-        const building = new Building(200); // This should work if the import is correct
+        // Create a subclass that implements the required method
+        class TestBuilding extends Building {
+            evacuationWarningMessage() {
+                return "This is a test building evacuation warning.";
+            }
+        }
+
+        const building = new TestBuilding(200); // Now this should work
         expect(building.sqft).toBe(200);
     });
 });
