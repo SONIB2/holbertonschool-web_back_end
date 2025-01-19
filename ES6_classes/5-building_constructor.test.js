@@ -1,4 +1,4 @@
-import Building from './building'; // Ensure this path is correct
+import Building from './5-building.js'; // Ensure this path is correct
 
 describe('Building Class', () => {
     test("Building forces override", () => {
