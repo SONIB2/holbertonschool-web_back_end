@@ -9,7 +9,7 @@ class Currency {
     this._code = code;
     this._name = name;
   }
-  get code() {
+  get code(){
     return this._code;
   }
   set code(newCode) {
