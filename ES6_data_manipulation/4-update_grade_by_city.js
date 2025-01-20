@@ -9,7 +9,7 @@ function updateStudentGradeByCity(students, city, newGrades) {
       return {
         ...student, // Spread the original student object
         grade: gradeObj ? gradeObj.grade : 'N/A', // Assign the grade or 'N/A'
-}
+      };
     });
 }
 export default updateStudentGradeByCity;
