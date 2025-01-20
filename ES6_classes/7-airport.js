@@ -1,16 +1,12 @@
-class HolbertonClass {
-  constructor(size, location) {
-    this._size = size;
-    this._location = location;
-  }
-
-  valueOf() {
-    return this._size;
+class Airport {
+  constructor(name, code) {
+    this._name = name;
+    this._code = code;
   }
 
   toString() {
-    return this._location;
+    return `[object ${this._code}]`;
   }
 }
 
-export default HolbertonClass;
+export default Airport;
