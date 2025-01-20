@@ -6,7 +6,7 @@ function updateStudentGradeByCity(students, city, newGrades) {
     .map((student) => {
       // Find the grade for the student in newGrades, if any
       const gradeObj = newGrades.find(grade => grade.studentId === student.id);
-  // If a grade is found, use it; otherwise, set grade to 'N/A'
+      // If a grade is found, use it; otherwise, set grade to 'N/A'
       student.grade = gradeObj ? gradeObj.grade : 'N/A';
       return student;
     });
