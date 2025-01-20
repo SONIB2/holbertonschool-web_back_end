@@ -1,10 +1,16 @@
-class Airport {
-  constructor(name, code) {
-    this._name = name;
-    this._code = code;
+class HolbertonClass {
+  constructor(size, location) {
+    this._size = size;
+    this._location = location;
   }
+
+  valueOf() {
+    return this._size;
+  }
+
   toString() {
-    return `[object ${this._code}]`;
+    return this._location;
   }
 }
-export default Airport;
+
+export default HolbertonClass;
