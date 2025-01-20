@@ -9,7 +9,6 @@ class TestBuilding extends Building {
     return "This is a test building evacuation warning.";
   }
 }
-
 try {
     new TestBuilding(200); // This should work now
 } catch (err) {
