@@ -1,7 +1,14 @@
-function cleanSet(set, startString = '') {
-    return [...set]
-      .filter(item => item.startsWith(startString))  // Filter values that start with startString
-      .map(item => item.slice(startString.length))   // Remove startString from each element
-      .join('-');                                   // Join the values with '-'
+export default function cleanSet(set, startString) {
+	const arr = [];
+	if (typeof startString === 'undefined' || startString === '' || typeof startString !== 'string') {
+		return '';
+	}
+	set.forEach((element) => {
+		if (typeof element !== 'undefined') {
+			if (element.startsWith(startString)) {
+				arr.push(element.split(startString)[1]);
+			}
+		}
+	});
+	return arr.join('-');
 }
-export default cleanSet;
