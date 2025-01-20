@@ -1,19 +1,17 @@
 export default function cleanSet(set, startString) {
-    const arr = [];
-  
-    // Check if startString is valid
-    if (typeof startString === 'undefined' || startString === '' || typeof startString !== 'string') {
-      return '';
-    }
-  
-    set.forEach((element) => {
-      // If element starts with startString, remove startString and push the rest
-      if (element.startsWith(startString)) {
-        arr.push(element.slice(startString.length));
+    // Create an array of strings that start with 'startString'
+    const result = [];
+    
+    // Loop through each element in the set
+    for (let item of set) {
+      // If the item starts with the startString
+      if (item.startsWith(startString)) {
+        // Append the part after the startString to the result array
+        result.push(item.slice(startString.length));
       }
-    });
-  
-    // If arr is empty, return an empty string, else join the array with hyphen
-    return arr.length > 0 ? arr.join('-') + '-' : '';
+    }
+    
+    // Join the array into a string separated by '-'
+    return result.join('-');
   }
   
