@@ -1,7 +1,7 @@
 export default function cleanSet(set, startString) {
-  // If the startString is empty, return all items from the set
-  if (startString === '') {
-      return [...set].join('-');
+  // If startString is not a string or is empty, return an empty string
+  if (typeof startString !== 'string' || startString === '') {
+      return '';
   }
   
   // Create an array of strings that start with 'startString'
