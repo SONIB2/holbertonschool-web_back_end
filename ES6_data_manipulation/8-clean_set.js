@@ -1,9 +1,8 @@
 export default function cleanSet(set, startString) {
   // If startString is not a string or is empty, return an empty string
   if (typeof startString !== 'string' || startString === '') {
-      return '';
+    return '';
   }
-  
   // Create an array of strings that start with 'startString'
   const result = [];
   
