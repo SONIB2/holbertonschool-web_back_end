@@ -1,37 +1,35 @@
-// 6-init.js
-
 const mysql = require('mysql');
 
-// Krijo lidhjen me bazën e të dhënave
+// Connection configuration
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'yourpassword', // Vendosni fjalëkalimin tuaj
-    database: 'yourdatabase'  // Vendosni emrin e bazës së të dhënave
+    password: 'yourpassword', // Update with the correct password
+    database: 'yourdatabase'  // Update with your database name
 });
 
-// Lidhja me bazën e të dhënave
+// Connect to the database
 connection.connect(err => {
     if (err) {
-        console.error('Lidhja me bazën e të dhënave dështoi: ' + err.stack);
+        console.error('Connection failed: ' + err.stack);
         return;
     }
-    console.log('Lidhja me bazën e të dhënave u krijua me sukses');
+    console.log('Connected to the database');
 });
 
-// Thirr procedurën AddBonusTest për të shtuar bonusin për një përdorues
-const user_id = 1; // Përdoruesi
-const project_name = 'Python is cool'; // Emri i projektit
-const bonus = 100; // Bonus
+// Adding bonus for a user
+const user_id = 1; // Example user ID
+const project_name = 'Python is cool'; // Example project name
+const bonus = 100; // Example bonus
 
-const query = `CALL AddBonusTest(?, ?, ?)`;
+const query = 'CALL AddBonusTest(?, ?, ?)';
 connection.query(query, [user_id, project_name, bonus], (err, results) => {
     if (err) {
-        console.error('Ndodhi një gabim gjatë ekzekutimit të procedurës: ' + err.message);
+        console.error('Error during procedure execution: ' + err.message);
         return;
     }
-    console.log('Bonus u shtua me sukses për përdoruesin ' + user_id + ' në projektin ' + project_name);
+    console.log(`Bonus of ${bonus} added for user ${user_id} in project ${project_name}`);
 });
 
-// Mbylle lidhjen me bazën e të dhënave
+// Close the connection
 connection.end();

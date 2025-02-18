@@ -1,25 +1,28 @@
--- 6-bonus.sql
-
 DELIMITER $$
 
--- Procedura për të shtuar bonusin për një përdorues për një projekt
+-- Modified procedure with better error handling
 CREATE PROCEDURE AddBonusTest(IN user_id INT, IN project_name VARCHAR(255), IN bonus INT)
 BEGIN
     DECLARE project_id INT;
 
-    -- Gjej id e projektit bazuar në emrin e projektit
+    -- Ensure the project exists
     SELECT id INTO project_id FROM projects WHERE name = project_name LIMIT 1;
-
-    -- Kontrollo nëse projekti ekziston
+    
+    -- If project does not exist, signal an error
     IF project_id IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Project not found';
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Project not found: ' + project_name;
     END IF;
 
-    -- Shto bonusin në tabelën e korrigjimeve
+    -- Ensure user exists before applying bonus
+    IF NOT EXISTS (SELECT 1 FROM users WHERE id = user_id) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User ID not found: ' + CAST(user_id AS CHAR);
+    END IF;
+
+    -- Insert or update the score in the corrections table
     INSERT INTO corrections (user_id, project_id, score)
     VALUES (user_id, project_id, bonus)
     ON DUPLICATE KEY UPDATE score = score + bonus;
 
 END$$
 
-DELIMITER ;
+DELIMITER 
