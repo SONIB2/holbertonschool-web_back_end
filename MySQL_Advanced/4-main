@@ -1,5 +1,5 @@
 #!/bin/bash
-# Look to the file glam rock
+# Look to the file store
 cat 4-init.sql | mysql -uroot -p holberton 
 cat 4-store.sql | mysql -uroot -p holberton 
 cat 4-main.sql | mysql -uroot -p holberton 
