@@ -1,15 +1,15 @@
--- Display existing records in the users table
+-- Show existing records in the users table
 SELECT * FROM users;
 
--- Insert some users into the table
+-- Insert new users into the table
 INSERT INTO users (email, name) VALUES ('bob@dylan.com', 'Bob');
 INSERT INTO users (email, name) VALUES ('sylvie@dylan.com', 'Sylvie');
 
 -- Show records after insertion
 SELECT * FROM users;
 
--- Attempt to insert a duplicate email to test the UNIQUE constraint
-INSERT INTO users (email, name) VALUES ('bob@dylan.com', 'Jean'); -- This should fail
+-- Try to insert a duplicate email
+INSERT INTO users (email, name) VALUES ('bob@dylan.com', 'Jean');  -- Should fail because of the UNIQUE constraint
 
--- Show the final state of the users table to ensure the duplicate was not inserted
+-- Show the final state of the users table
 SELECT * FROM users;
