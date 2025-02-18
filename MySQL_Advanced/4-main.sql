@@ -1,13 +1,13 @@
--- Create trigger to decrease quantity after adding an order
-DELIMITER $$
+-- Show the current state of the items and orders tables
+SELECT * FROM items;
+SELECT * FROM orders;
 
-CREATE TRIGGER after_order_insert
-AFTER INSERT ON orders
-FOR EACH ROW
-BEGIN
-    UPDATE items
-    SET quantity = quantity - NEW.number
-    WHERE name = NEW.item_name;
-END $$
+-- Insert new orders
+INSERT INTO orders (item_name, number) VALUES ('apple', 1);
+INSERT INTO orders (item_name, number) VALUES ('apple', 3);
+INSERT INTO orders (item_name, number) VALUES ('pear', 2);
 
-DELIMITER ;
+-- Show the updated state of the items and orders tables
+SELECT "--";
+SELECT * FROM items;
+SELECT * FROM orders;
