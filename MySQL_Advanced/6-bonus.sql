@@ -1,32 +1,21 @@
 DELIMITER $$
 
-CREATE PROCEDURE AddBonus(
-    IN user_id INT,
-    IN project_name VARCHAR(255),
-    IN bonus INT
-)
+CREATE PROCEDURE AddBonusTest(IN user_id INT, IN project_name VARCHAR(255), IN bonus INT)
 BEGIN
     DECLARE project_id INT;
+    
+    -- Find project_id based on project_name
+    SELECT id INTO project_id FROM projects WHERE name = project_name;
 
-    -- Get the project ID based on the project name
-    SELECT id INTO project_id
-    FROM projects
-    WHERE name = project_name;
-
-    -- If the project does not exist, insert it and get the project ID
+    -- Check if project exists
     IF project_id IS NULL THEN
-        INSERT INTO projects (name) VALUES (project_name);
-        SET project_id = LAST_INSERT_ID();
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Project not found';
     END IF;
 
-    -- Check if the correction already exists
-    IF EXISTS (SELECT 1 FROM corrections WHERE user_id = user_id AND project_id = project_id) THEN
-        -- Update the existing correction
-        UPDATE corrections SET score = score + bonus WHERE user_id = user_id AND project_id = project_id;
-    ELSE
-        -- Insert a new correction with the bonus score
-        INSERT INTO corrections (user_id, project_id, score) VALUES (user_id, project_id, bonus);
-    END IF;
+    -- Add the bonus to the corrections table
+    INSERT INTO corrections (user_id, project_id, score)
+    VALUES (user_id, project_id, bonus)
+    ON DUPLICATE KEY UPDATE score = score + bonus;
 END$$
 
 DELIMITER ;
