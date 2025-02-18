@@ -1,10 +1,7 @@
--- Use the correct database
-USE holberton;
+-- 2-main.sql
+-- First, let's import the metal_bands.sql file into the database (this assumes it's a valid file)
+-- Run the metal_bands.sql dump
+source /path/to/metal_bands.sql;
 
--- Import the table data from the metal_bands.sql file
-SOURCE metal_bands.sql;
-
--- Now, let's rank countries based on the number of fans in descending order
-SELECT origin, fans_count  -- Use the actual column name here
-FROM metal_bands
-ORDER BY fans_count DESC;  -- Use the actual column name here
+-- Then, execute the fan ranking query from 2-fans.sql
+source /path/to/2-fans.sql;
