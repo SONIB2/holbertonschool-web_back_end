@@ -1,7 +1,5 @@
--- 3-glam_rock.sql
-SELECT band_name,
-       YEAR(split) - YEAR(formed) AS lifespan
+-- Durantion current
+SELECT band_name, IFNULL(split, 2024) - formed AS lifespan
 FROM metal_bands
-WHERE style = 'Glam rock'
-AND split IS NOT NULL 
+WHERE style LIKE '%Glam rock%'
 ORDER BY lifespan DESC;
