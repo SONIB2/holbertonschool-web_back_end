@@ -1,13 +1,27 @@
--- Show existing projects and corrections
-SELECT * FROM projects;
-SELECT * FROM corrections;
+-- 6-main.sql
 
--- Call the AddBonus procedure
-CALL AddBonus((SELECT id FROM users WHERE name = "Jeanne"), "Python is cool", 100);
-CALL AddBonus((SELECT id FROM users WHERE name = "Jeanne"), "Bonus project", 100);
-CALL AddBonus((SELECT id FROM users WHERE name = "Bob"), "Bonus project", 10);
-CALL AddBonus((SELECT id FROM users WHERE name = "Jeanne"), "New bonus", 90);
+-- Krijimi i tabelës së projekteve
+CREATE TABLE IF NOT EXISTS projects (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
 
--- Show updated tables
-SELECT * FROM projects;
-SELECT * FROM corrections;
+-- Krijimi i tabelës së korrigjimeve
+CREATE TABLE IF NOT EXISTS corrections (
+    user_id INT NOT NULL,
+    project_id INT NOT NULL,
+    score INT DEFAULT 0,
+    PRIMARY KEY(user_id, project_id),
+    FOREIGN KEY(project_id) REFERENCES projects(id)
+);
+
+-- Disa të dhëna shembull për projektet
+INSERT INTO projects (name) VALUES
+('Python is cool'),
+('AI and Machine Learning'),
+('Data Science for All');
+
+-- Disa të dhëna shembull për përdoruesit dhe bonuset
+INSERT INTO corrections (user_id, project_id, score) VALUES
+(1, 1, 100),
+(2, 2, 150);
