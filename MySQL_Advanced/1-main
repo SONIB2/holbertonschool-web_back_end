@@ -1,0 +1,4 @@
+#!/bin/bash
+# Make table and insert data
+echo "SELECT * FROM users;" | mysql -uroot -p holberton
+cat 1-country_users.sql | mysql -uroot -p holberton
