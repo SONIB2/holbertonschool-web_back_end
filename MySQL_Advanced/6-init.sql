@@ -1,9 +1,9 @@
--- Drop tables if they exist
+-- Drop existing tables to avoid duplication
 DROP TABLE IF EXISTS corrections;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS projects;
 
--- Create 'users' table
+-- Create Users table
 CREATE TABLE IF NOT EXISTS users (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
@@ -11,12 +11,12 @@ CREATE TABLE IF NOT EXISTS users (
     PRIMARY KEY (id)
 );
 
--- Create 'projects' table
+-- Create Projects table
 CREATE TABLE IF NOT EXISTS projects (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
 
--- Create 'corrections' table
-CREATE TABLE IF NOT EXISTS corrections (
+-- Create Corrections table
+CREATE TABLE IF 

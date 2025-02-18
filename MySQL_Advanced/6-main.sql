@@ -1,17 +1,13 @@
--- Show existing projects and corrections
+-- Show initial data
 SELECT * FROM projects;
 SELECT * FROM corrections;
 
-SELECT "--";
-
--- Call AddBonus to add new scores
+-- Add bonus corrections
 CALL AddBonus((SELECT id FROM users WHERE name = "Jeanne"), "Python is cool", 100);
 CALL AddBonus((SELECT id FROM users WHERE name = "Jeanne"), "Bonus project", 100);
 CALL AddBonus((SELECT id FROM users WHERE name = "Bob"), "Bonus project", 10);
 CALL AddBonus((SELECT id FROM users WHERE name = "Jeanne"), "New bonus", 90);
 
-SELECT "--";
-
--- Show updated projects and corrections
+-- Show updated data
 SELECT * FROM projects;
 SELECT * FROM corrections;
