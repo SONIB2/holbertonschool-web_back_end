@@ -8,7 +8,7 @@ echo 'INSERT INTO users (email, name) VALUES ("sylvie@dylan.com", "Sylvie");' | 
 echo 'INSERT INTO users (email, name) VALUES ("bob@dylan.com", "Jean");' | mysql -uroot -p holberton
 # ERROR 1062 (23000) at line 1: Duplicate entry 'bob@dylan.com' for key 'email'
 echo "SELECT * FROM users;" | mysql -uroot -p holberton
-Enter password:
+Enter password: 
 id  email   name
 1   bob@dylan.com   Bob
 2   sylvie@dylan.com    Sylvie
