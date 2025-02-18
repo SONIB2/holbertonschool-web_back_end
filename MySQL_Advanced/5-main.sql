@@ -1,20 +1,22 @@
--- Show initial state of users table
+-- Display initial data
 SELECT * FROM users;
 
--- Update valid_email without changing email (should not reset valid_email)
+-- Updating valid_email manually (should NOT reset valid_email)
 UPDATE users SET valid_email = 1 WHERE email = "bob@dylan.com";
 
--- Change email (should reset valid_email to 0)
+-- Changing email (should reset valid_email to 0)
 UPDATE users SET email = "sylvie+new@dylan.com" WHERE email = "sylvie@dylan.com";
 
--- Update only the name (should not reset valid_email)
+-- Changing only the name (should NOT reset valid_email)
 UPDATE users SET name = "Jannis" WHERE email = "jeanne@dylan.com";
 
+-- Display results
 SELECT "--";
 SELECT * FROM users;
 
--- Try updating email with the same value (should not reset valid_email)
+-- Updating email to the same value (should NOT reset valid_email)
 UPDATE users SET email = "bob@dylan.com" WHERE email = "bob@dylan.com";
 
+-- Display final results
 SELECT "--";
 SELECT * FROM users;
