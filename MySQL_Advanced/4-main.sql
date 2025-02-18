@@ -1,5 +1,13 @@
-#!/bin/bash
-# Look to the file store
-cat 4-init.sql | mysql -uroot -p holberton 
-cat 4-store.sql | mysql -uroot -p holberton 
-cat 4-main.sql | mysql -uroot -p holberton 
+-- Create trigger to decrease quantity after adding an order
+DELIMITER $$
+
+CREATE TRIGGER after_order_insert
+AFTER INSERT ON orders
+FOR EACH ROW
+BEGIN
+    UPDATE items
+    SET quantity = quantity - NEW.number
+    WHERE name = NEW.item_name;
+END $$
+
+DELIMITER ;
