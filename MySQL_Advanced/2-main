@@ -1,4 +1,0 @@
-#!/bin/bash
-# Look to the file fans
-cat metal_bands.sql | mysql -uroot -p holberton
-cat 2-fans.sql | mysql -uroot -p holberton

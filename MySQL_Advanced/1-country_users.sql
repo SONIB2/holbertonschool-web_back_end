@@ -1,13 +1,10 @@
--- Disable foreign key checks temporarily
-SET foreign_key_checks = 0;
+-- Ensure the database is selected
+USE holberton;
 
--- Create the users table
-CREATE TABLE IF NOT EXISTS users (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    name VARCHAR(255),
-    country ENUM('US', 'CO', 'TN') NOT NULL DEFAULT 'US'
-);
+-- Call the script to create the table and populate it with data (you can also directly import this from the dump file)
+SOURCE 2-fans.sql;
 
--- Enable foreign key checks back
-SET foreign_key_checks = 1;
+-- Now we run the query to rank the countries based on the number of fans
+SELECT origin, nb_fans
+FROM metal_bands
+ORDER BY nb_fans DESC;
