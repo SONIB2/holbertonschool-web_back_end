@@ -1,11 +1,9 @@
--- Initial setup
-
--- Drop the existing tables if they exist
+-- Drop tables if they exist to avoid conflicts
 DROP TABLE IF EXISTS corrections;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS projects;
 
--- Create the users table
+-- Create users table
 CREATE TABLE IF NOT EXISTS users (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
@@ -13,39 +11,38 @@ CREATE TABLE IF NOT EXISTS users (
     PRIMARY KEY (id)
 );
 
--- Create the projects table
+-- Create projects table
 CREATE TABLE IF NOT EXISTS projects (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
--- Create the corrections table with foreign keys
+-- Create corrections table
 CREATE TABLE IF NOT EXISTS corrections (
     user_id INT NOT NULL,
     project_id INT NOT NULL,
     score INT DEFAULT 0,
-    KEY user_id (user_id),
-    KEY project_id (project_id),
-    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
-    CONSTRAINT fk_project_id FOREIGN KEY (project_id) REFERENCES projects (id) ON DELETE CASCADE
+    PRIMARY KEY (user_id, project_id),
+    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    CONSTRAINT fk_project_id FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE
 );
 
--- Insert sample users
+-- Insert users into the users table
 INSERT INTO users (name) VALUES ("Bob");
 SET @user_bob = LAST_INSERT_ID();
 
 INSERT INTO users (name) VALUES ("Jeanne");
 SET @user_jeanne = LAST_INSERT_ID();
 
--- Insert sample projects
+-- Insert projects into the projects table
 INSERT INTO projects (name) VALUES ("C is fun");
 SET @project_c = LAST_INSERT_ID();
 
 INSERT INTO projects (name) VALUES ("Python is cool");
 SET @project_py = LAST_INSERT_ID();
 
--- Insert sample corrections
+-- Insert corrections for the users and projects
 INSERT INTO corrections (user_id, project_id, score) VALUES (@user_bob, @project_c, 80);
 INSERT INTO corrections (user_id, project_id, score) VALUES (@user_bob, @project_py, 96);
 
