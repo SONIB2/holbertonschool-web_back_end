@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
-// Connection configuration
+// Database connection configuration
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'yourpassword', // Update with the correct password
+    password: 'yourpassword', // Update with your password
     database: 'yourdatabase'  // Update with your database name
 });
 
@@ -17,7 +17,7 @@ connection.connect(err => {
     console.log('Connected to the database');
 });
 
-// Adding bonus for a user
+// Parameters for calling the procedure
 const user_id = 1; // Example user ID
 const project_name = 'Python is cool'; // Example project name
 const bonus = 100; // Example bonus
@@ -25,7 +25,7 @@ const bonus = 100; // Example bonus
 const query = 'CALL AddBonusTest(?, ?, ?)';
 connection.query(query, [user_id, project_name, bonus], (err, results) => {
     if (err) {
-        console.error('Error during procedure execution: ' + err.message);
+        console.error('Error executing the procedure: ' + err.message);
         return;
     }
     console.log(`Bonus of ${bonus} added for user ${user_id} in project ${project_name}`);
