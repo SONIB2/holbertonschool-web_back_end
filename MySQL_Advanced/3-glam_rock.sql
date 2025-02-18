@@ -1,4 +1,7 @@
--- Step 1: Select the data and rank countries by the number of bands
-SELECT band_name and lifespan
+-- 3-glam_rock.sql
+SELECT band_name,
+       YEAR(split) - YEAR(formed) AS lifespan
 FROM metal_bands
-ORDER BY nb_fans DESC;
+WHERE style = 'Glam rock'
+AND split IS NOT NULL  -- Ensure the band has split, and we can compute lifespan
+ORDER BY lifespan DESC;
