@@ -3,5 +3,5 @@ SELECT band_name,
        YEAR(split) - YEAR(formed) AS lifespan
 FROM metal_bands
 WHERE style = 'Glam rock'
-AND split IS NOT NULL  -- Ensure the band has split, and we can compute lifespan
+AND split IS NOT NULL 
 ORDER BY lifespan DESC;
