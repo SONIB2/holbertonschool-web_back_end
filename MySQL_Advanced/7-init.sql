@@ -33,21 +33,13 @@ CREATE TABLE IF NOT EXISTS corrections (
 INSERT INTO users (name) VALUES ("Bob");
 INSERT INTO users (name) VALUES ("Jeanne");
 
--- Set user IDs
-SET @user_bob = (SELECT id FROM users WHERE name = 'Bob');
-SET @user_jeanne = (SELECT id FROM users WHERE name = 'Jeanne');
-
 -- Insert sample projects
 INSERT INTO projects (name) VALUES ("C is fun");
 INSERT INTO projects (name) VALUES ("Python is cool");
 
--- Set project IDs
-SET @project_c = (SELECT id FROM projects WHERE name = 'C is fun');
-SET @project_py = (SELECT id FROM projects WHERE name = 'Python is cool');
-
 -- Insert corrections (scores for users in projects)
-INSERT INTO corrections (user_id, project_id, score) VALUES (@user_bob, @project_c, 80);
-INSERT INTO corrections (user_id, project_id, score) VALUES (@user_bob, @project_py, 96);
+INSERT INTO corrections (user_id, project_id, score) VALUES (1, 1, 80);
+INSERT INTO corrections (user_id, project_id, score) VALUES (1, 2, 96);
 
-INSERT INTO corrections (user_id, project_id, score) VALUES (@user_jeanne, @project_c, 91);
-INSERT INTO corrections (user_id, project_id, score) VALUES (@user_jeanne, @project_py, 73);
+INSERT INTO corrections (user_id, project_id, score) VALUES (2, 1, 91);
+INSERT INTO corrections (user_id, project_id, score) VALUES (2, 2, 73);
