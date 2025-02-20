@@ -1,12 +1,11 @@
--- Show and compute average score
+-- Show initial data
 SELECT * FROM users;
 SELECT * FROM corrections;
 
+-- Compute average score for Jeanne
 SELECT "--";
+CALL ComputeAverageScoreForUser((SELECT id FROM users WHERE name = "Jeanne"));
 
--- Call procedure to compute the average score for Jeanne (user_id = 2)
-CALL ComputeAverageScoreForUser(2);
-
+-- Show updated data
 SELECT "--";
--- Show updated users table with average scores
 SELECT * FROM users;
