@@ -1,16 +1,17 @@
--- Insert sample projects
-INSERT INTO projects (name) VALUES
-('Python is cool'),
-('AI and Machine Learning'),
-('Data Science for All');
+-- Display existing data
+SELECT * FROM projects;
+SELECT * FROM corrections;
 
--- Insert sample users
-INSERT INTO users (name) VALUES
-('John Doe'),
-('Jane Smith'),
-('Alice Johnson');
+SELECT "--";
 
--- Insert sample corrections (if they are not already inserted)
-INSERT INTO corrections (user_id, project_id, score) VALUES
-(1, 1, 100),
-(2, 2, 150);
+-- Add bonus corrections using the stored procedure
+CALL AddBonus((SELECT id FROM users WHERE name = "Jeanne"), "Python is cool", 100);
+CALL AddBonus((SELECT id FROM users WHERE name = "Jeanne"), "Bonus project", 100);
+CALL AddBonus((SELECT id FROM users WHERE name = "Bob"), "Bonus project", 10);
+CALL AddBonus((SELECT id FROM users WHERE name = "Jeanne"), "New bonus", 90);
+
+SELECT "--";
+
+-- Display updated data
+SELECT * FROM projects;
+SELECT * FROM corrections;
